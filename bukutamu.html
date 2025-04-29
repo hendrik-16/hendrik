@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Buku Tamu</title>
+    <link rel="stylesheet" href="bk.css">
+    <style>
+        #kanan input, #kanan textarea, #kanan button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        #kiri {
+            border-left: 1px solid #ccc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="utama">
+        <div id="pemhe">
+            <div id="headerkiri">
+                <img src="images/logobaru-removebg-preview.png" width="110px" height="100px">
+            </div>
+            <div id="headerkanan">
+                <h1>WEB TEKNIK PERMESINAN</h1>
+            </div>
+        </div>
+
+        <div id="pembungkus">
+            <div id="header">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="profil jurusan.html">Profil jurusan</a></li>
+                    <li><a href="prestasi.html">Prestasi</a></li>
+                    <li><a href="album.html">Album</a></li>
+                    <li><a href="bukutamu.html">Buku tamu</a></li>
+                </ul>
+            </div>
+
+            <div id="kanan">
+                <label>Nama:</label><br>
+                <input type="text" id="nama" required><br>
+
+                <label>Tanggal Berkunjung:</label><br>
+                <input type="date" id="tanggal"><br>
+
+                <label>Email:</label><br>
+                <input type="email" id="email" required><br>
+
+                <label>Pesan:</label><br>
+                <textarea id="pesan" rows="5" required></textarea><br>
+
+                <button onclick="kirimData()">Kirim</button>
+            </div>
+
+            <div id="kiri">
+                <h1 id="judul">SILAHKAN ISI BUKU TAMU TERLEBIH DAHULU</h1>
+                <div id="hasil"></div>
+            </div>
+
+            <div id="kaki">
+                <marquee scrollamount="6">Hendrik</marquee>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function kirimData() {
+            const nama = document.getElementById("nama").value;
+            const tanggal = document.getElementById("tanggal").value;
+            const email = document.getElementById("email").value;
+            const pesan = document.getElementById("pesan").value;
+
+            if (nama && tanggal && email && pesan) {
+                const hasilDiv = document.getElementById("hasil");
+                const judul = document.getElementById("judul");
+
+                judul.innerText = "DATA BUKU TAMU";
+                hasilDiv.innerHTML = `
+                    <p><strong>Nama:</strong> ${nama}</p>
+                    <p><strong>Tanggal:</strong> ${tanggal}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Pesan:</strong> ${pesan}</p>
+                `;
+
+                document.getElementById("nama").value = "";
+                document.getElementById("tanggal").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("pesan").value = "";
+            } else {
+                alert("Mohon isi semua kolom!");
+            }
+        }
+    </script>
+</body>
+</html>
